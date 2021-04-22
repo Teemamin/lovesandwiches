@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -28,7 +28,12 @@ def get_sales_data():
         print("please enter sales dta from the last market")
         print("data should be six numbers seperated by commas ")
         print("10,20,30,40,50,60\n")
-        data_str = input("enter your data here:")
+        data_str = input("enter your data here:\n")
+        """
+        we need to add a new line character at the  end of the text inside the input method.  
+        This is due to an odd quirk in the software  we used to create the mock terminal.  
+        Without this extra line, the text for the import  request will not show up in the terminal. for heroku app 
+        """
         sales_data = data_str.split(",")
 
         if validate_data(sales_data):
